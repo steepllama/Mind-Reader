@@ -39,7 +39,7 @@ const userController = {
         .catch(err => res.json(err));
     },
 
-    // 
+    // create new user
     newUser({ params, body }, res) {
         User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true})
         .then(dbUserData => {
