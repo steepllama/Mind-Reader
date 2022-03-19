@@ -38,23 +38,9 @@ const UserSchema = new Schema({
 
 UserSchema.virtual("friendCount").get(function() {
     return this.friends.length;
-})
+});
 
 const User = model('User', UserSchema)
 
 
 module.export = User;
-
-
-// userSchema.virtual('domain').get(() => {
-//     return this.email.slice(this.email.indexOf('@')+1);
-// })
-
-// const User = mongoose.model('User', userSchema);
-
-// let doc = await User.create({email: 'sem@gmail.com'});
-
-// doc.domain;
-
-
-
