@@ -16,3 +16,10 @@ router.route('/').get(getAllThought).post(newThought);
 router
     .route('/:id')
     .get(getThoughtById)
+    .put(renewThought)
+    .delete(removeThought)
+
+    router.route('/:thoughtId/replies').post(newReply);
+    router.route('/:thoughtId/replies').delete(deleteReply);
+
+    module.exports = router;
