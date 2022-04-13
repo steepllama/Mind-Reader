@@ -19,7 +19,7 @@ const userController = {
 
     // only one user by id
     getUserById({ params }, res) {
-        User.findOne({ _id: params.id })
+        User.findOne({ _id: params.thoughtId })
         .populate({
             path: 'users',
             select: '-__v'
@@ -41,7 +41,7 @@ const userController = {
 
     // create new user
     newUser({ params, body }, res) {
-        User.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true})
+        User.findOneAndUpdate({ _id: params.thoughtId }, body, { new: true, runValidators: true})
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id!' });
@@ -54,7 +54,7 @@ const userController = {
     
     // delete user
     deleteUser({ params }, res) {
-        User.findOneAndDelete({ _id: params.id })
+        User.findOneAndDelete({ _id: params.thoughtId })
         .then(dbUserData => { 
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user with this id exists! '});
